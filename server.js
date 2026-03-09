@@ -1,8 +1,10 @@
-// server.js
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+
+//local imports
+import healthRoutes from './routes/healthRoutes.js';
 
 const app = express();
 
@@ -20,7 +22,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'OK', message: 'InvoiceGuard Backend is alive.' });
+  res
+    .status(200)
+    .json({ status: 'OK', message: 'InvoiceGuard Backend is alive.' });
 });
 
 // Start Server
