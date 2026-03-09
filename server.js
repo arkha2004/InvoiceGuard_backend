@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 
 //local imports
 import healthRoutes from './routes/healthRoutes.js';
+import invoiceRoutes from './routes/invoiceRoutes.js';
 
 const app = express();
 
@@ -26,6 +27,9 @@ app.get('/api/health', (req, res) => {
     .status(200)
     .json({ status: 'OK', message: 'InvoiceGuard Backend is alive.' });
 });
+
+//InvoiceUpload
+app.use('/api/invoices', invoiceRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;
